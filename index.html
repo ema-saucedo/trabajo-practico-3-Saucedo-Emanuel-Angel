@@ -21,18 +21,39 @@
       </h2>
     </header>
     <main class="container">
-      <div class="cardPj">
-        <!-- <div class="card" style="width: 18rem">
-          <img src="..." class="card-img-top" alt="..." />
-          <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">
-              Some quick example text to build on the card title and make up the
-              bulk of the card’s content.
-            </p>
-            <a href="#" class="btn btn-warning">Ver más</a>
+      <!-- Buscador  -->
+      <section class="search-section mb-4">
+        <form id="formBuscar" class="search-form">
+          <label for="buscarPj">Buscar personaje por nombre</label>
+          <div class="input-group">
+            <input
+              type="search"
+              id="buscarPj"
+              class="form-control"
+              placeholder="Ej: Homer, Marge, Bart..."
+            />
           </div>
-        </div> -->
+          <button
+            type="submit"
+            id="btnLimpiar"
+            class="btn btn-outline-secondary"
+          >
+            Limpiar
+          </button>
+        </form>
+      </section>
+      <!-- ACÁ VAN A ESTAR LOS MENSAJES DE ERRORES  -->
+      <div id="mensajeEstado" class="mb-3"></div>
+      <!-- ACÁ VAN A ESTAR LAS CARTAS QUE VAN A CONTENER LOS PERSONAJES -->
+      <div class="row g-3" id="cartaPj"></div>
+      <!-- ESTE ES EL MODAL DE BOOSTRAP -->
+      <div class="modal fade" id="modalDetalle" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">...</div>
+            <div class="modal-body">...</div>
+          </div>
+        </div>
       </div>
     </main>
     <footer
