@@ -48,14 +48,14 @@ function mostrarPersonajes(lista) {
     const imagen = CDN_URL + personaje.portrait_path;
     //Acá se usa el "+=" porque usar solo el "=" replazaría todo el contenido por cada vuelta del forEach dejando solo la ultima card, usando el "+=" significa "tomá lo que ya hay, y agregá esto al final" asi por vuelta va a ir agregando cada una de las tarjetas
     contenedor.innerHTML += `
-         <div class="col-md-3">
+      <div class="col-md-3">
         <div class="card h-100">
           <img src="${imagen}" class="card-img-top" alt="${personaje.name}">
           <div class="card-body">
             <h5 class="card-title">${personaje.name}</h5>
             <p class="card-text">Ocupación: ${personaje.occupation}</p>
             <p class="card-text">Estado: ${personaje.status}</p>
-            <button class="btn btn-primary btn-detalle" data-id="${personaje.id}">
+            <button class="btn btn-warning btn-detalle" data-id="${personaje.id}">
               Ver detalle
             </button>
           </div>

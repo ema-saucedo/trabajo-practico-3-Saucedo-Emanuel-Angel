@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Simpsons API</title>
+    <link rel="icon" href="assets/img/the-simpsons-yellow-logo-png_seeklogo-403268.png">
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -13,9 +14,9 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body class="d-flex flex-column min-vh-100">
-    <header class="bg-warning text-center text-white p-2">
-      <h1 class="fw-bold">Simpsons API🍩</h1>
-      <h2 class="text-decoration-underline">
+    <header class="bg-warning text-center text-white p-2 shadow">
+      <h1 class="fw-bold ">Simpsons API🍩</h1>
+      <h2 class=" ">
         Instituto Politécnico - Saucedo Angel Emanuel <br />
         Trabajo Práctico Integrador - TLP
       </h2>
@@ -23,8 +24,8 @@
     <main class="container">
       <!-- Buscador  -->
       <section class="search-section mb-4">
-        <form id="formBuscar" class="search-form">
-          <label for="buscarPj">Buscar personaje por nombre</label>
+        <form id="formBuscar" class="search-form mt-3">
+          <label for="buscarPj" class="fs-3 fw-semibold text-gray">Buscar personaje por nombre</label>
           <div class="input-group">
             <input
               type="search"
@@ -36,7 +37,7 @@
           <button
             type="submit"
             id="btnLimpiar"
-            class="btn btn-outline-secondary"
+            class="btn btn-warning mt-2"
           >
             Limpiar
           </button>
