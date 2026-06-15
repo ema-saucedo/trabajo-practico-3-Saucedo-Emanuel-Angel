@@ -112,3 +112,14 @@ function mostrarModal(personaje){
     const modal = new bootstrap.Modal(document.getElementById("modalDetalle"));
     modal.show();
 }
+//Acá le decimos al navegador que cuando se termine de cargar todo el hmtl se ejecute el obtenerPersonajes
+document.addEventListener("DOMContentLoaded", obtenerPersonajes);
+//Esta línea dice que cada vez que se escriba algo dentro del inputBuscar se ejecute la función filtrarPersonajes
+inputBuscar.addEventListener("input", filtrarPersonajes);
+//En esta parte puede ser medio confusa porque me pregunte por qué no le pongo el evento al botón pero lo que pasa es que cuando la página carga el botón todavia no existe, porque ese botón se crea recíen cuando llega la respuesta de la API y mostrarPersonajes() genera las cards con sus botones por eso se le agrega desde el principio, aunque esté vacío le decimos que cada que se haga click en el boton(btn-detalle) que abra el detalle de ese personaje.
+contenedor.addEventListener("click", (event) => {
+  if (event.target.classList.contains("btn-detalle")) {
+    const id = event.target.dataset.id;
+    obtenerDetalle(id);
+  }
+});
