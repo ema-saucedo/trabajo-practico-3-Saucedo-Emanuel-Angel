@@ -13,7 +13,7 @@ let personajes = [];
 async function obtenerPersonajes() {
     try {
        
-//  Acá con el fetch hacemos la peticion a la API para obtener sus datos en bruto y los almacenamos en la constante
+//Acá con el fetch hacemos la peticion a la API para obtener sus datos en bruto y los almacenamos en la constante
         const respuesta = await fetch(API_URL);
  //En esta parte al hacer el "respuesta.json()" lo que hacemos es pasar los datos en bruto de la anterior linea a un objeto manipulable, (estaría haciendo de esos datos un arreglo con informacion limpia)
         const datos = await respuesta.json();
@@ -41,7 +41,7 @@ function mostrarPersonajes(lista){
     }
 
     mensaje.innerHTML = "";
-    //En esta parte el forEach le decimos al forEach"por cada personaje hace esto"
+    //En esta parte al forEach le decimos"por cada personaje hace esto"
     lista.forEach((personaje) => {
     //Esto es para las imagenes donde accedemos a la propiedad portrait_path de cada objeto que nos da una ruta relativa para saber la imagen del personaje
         const imagen = CDN_URL + personaje.portrait_path;
@@ -62,4 +62,20 @@ function mostrarPersonajes(lista){
       </div>
         `;
     });
+}
+//Acá hacemos el buscador de los personajes con la función filtrarPersonajes
+function filtrarPersonajes () {
+//Declaramos esta constante de texto que es el nombre que ingresa el usuario en el buscador donde tomamos el valor del inputBuscar y con el .trim decimos que borre todos los espacios vacios y con el toLowerCase forzamos que el texto sea en minuscula así no existen diferencias entre mayúsculas y minusculas.
+    const texto = inputBuscar.value.trim().toLowerCase();
+//Esto dice que "Si texto es estrictamente igual a vacio entonces se devuelve el valor de la función mostrarPersonajes" (osea que se no se va a mostrar ningun cambio, solo se van a ver los personajes tal como están)
+    if (texto === "") {
+        mostrarPersonajes(personajes);
+        return;
+    }
+//Acá declaramos una constante con valor personajes.filter que es literalmente "dame un nuevo arreglo con los elementos que cumplen esta condición"
+    const filtrados = personajes.filter((personaje) => 
+//Esta sería la condición para que el personaje pase el filtro, el ".includes(texto)" revisa que el texto que se escribió esta dentro de personaje.name en caso de que esté va a dar verdadero y va a llamar a la función que va a mostrar el personaje que se está buscando, caso contrario no mostrará una alerta que dice "no se encontraron personajes"
+        personaje.name.toLowerCase().includes(texto)
+    );
+    mostrarPersonajes(filtrados);
 }
