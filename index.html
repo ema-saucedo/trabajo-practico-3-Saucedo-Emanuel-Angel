@@ -50,8 +50,34 @@
       <div class="modal fade" id="modalDetalle" tabindex="-1">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
-            <div class="modal-header">...</div>
-            <div class="modal-body">...</div>
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalNombre"></h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+              ></button>
+            </div>
+            <div class="modal-body text-center">
+              <img
+                id="modalImagen"
+                src=""
+                alt=""
+                class="img-fluid mb-3"
+                style="max-height: 250px"
+              />
+              <p><strong>Edad:</strong> <span id="modalEdad"></span></p>
+              <p>
+                <strong>Fecha de nacimiento:</strong>
+                <span id="modalNacimiento"></span>
+              </p>
+              <p><strong>Género:</strong> <span id="modalGenero"></span></p>
+              <p>
+                <strong>Ocupación:</strong> <span id="modalOcupacion"></span>
+              </p>
+              <p><strong>Estado:</strong> <span id="modalEstado"></span></p>
+              <p><em id="modalFrase"></em></p>
+            </div>
           </div>
         </div>
       </div>
