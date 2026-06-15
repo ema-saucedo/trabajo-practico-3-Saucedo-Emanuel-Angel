@@ -79,3 +79,36 @@ function filtrarPersonajes () {
     );
     mostrarPersonajes(filtrados);
 }
+
+async function obtenerDetalle(id) {
+    try {
+//Acá realizamos la petición a la API para pedir los datos del personaje con ese "id" con el "fetch(`${API_URL}/${id}`)" basicamente le estoy pidiendo que vaya a esa URL y me busque información del personaje que tiene ese id
+        const respuesta = await fetch(`${API_URL}/${id}`);
+//Y acá solo se esta pasando esos datos planos a un objeto manipulable con el .json()
+        const personaje = await respuesta.json()
+
+        mostrarModal(personaje);
+//Acá se utiliza alert en el catch no como en la otra función de obtenerPersonajes que se una "mensaje.innerHTML" porque en esta parte si no funciona la pagína debería funcionar igual, en cambio en la otra si no funcionaba no mostraría nada entonces si tiene sentido que en esa función haya un mensaje "permanente" dentro de la página
+    } catch (error){
+        console.log(error);
+        alert("No se pudo cargar el detalle del personaje");
+    }
+}
+
+function mostrarModal(personaje){
+//En esta parte utilizamos el .textContent y no el .innerHTML porque el textContent va a insertar el valor como texto plano, sin interpretarlo como HTML, en cambio el otro sí.
+    document.getElementById("modalNombre").textContent = personaje.name;
+    document.getElementById("modalImagen").src = CDN_URL + personaje.portrait_path;
+//En este modal el ?? significa que si personaje.age es null va a mostrar el mensaje "Desconocida" es conveniente usar este y no un || (OR) porque el ?? interpreta el null solo cuando es VACÍO "", en cambio el || tambien lo va a interpretar como null pero tambien lo toma al 0 y el 0 tambien es una edad valida porque podria ser la edad de un recíen nacido.
+    document.getElementById("modalEdad").textContent = personaje.age ?? "Desconocida";
+    document.getElementById("modalNacimiento").textContent = personaje.birthdate ?? "Desconocida";
+    document.getElementById("modalGenero").textContent = personaje.occupation;
+    document.getElementById("modalOcupacion").textContent = personaje.occupation;
+    document.getElementById("modalEstado").textContent = personaje.status;
+//En esta utilizo el personaje.phrases[0] porque la consigna solo pide mostrar una sola frase.
+    document.getElementById("modalFrase").textContent = personaje.phrases[0] ?? "Sin frases";
+
+//Acá basicamente le estamos diciendo que "Busque en el diseño de la página la ventana modalDetalle y que la prepare usando Boostrap y que se muestre en pantalla con el modal.show"
+    const modal = new bootstrap.Modal(document.getElementById("modalDetalle"));
+    modal.show();
+}
